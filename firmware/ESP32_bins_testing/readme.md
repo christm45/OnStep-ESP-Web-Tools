@@ -1,3 +1,23 @@
+Preparing your firmware
+If you have ESP32 firmware and are using ESP-IDF framework v4 or later, you will need to create a merged version of your firmware before being able to use it with ESP Web Tools. If you use ESP8266 or ESP32 with ESP-IDF v3 or earlier, you can skip this section.
+
+ESP32 firmware is split into 4 different files. When these files are installed using the command-line tool esptool, it will patch flash frequency, flash size and flash mode to match the target device. ESP Web Tools is not able to do this on the fly, so you will need to use esptool to create the single binary file and use that with ESP Web Tools.
+
+Create a single binary using esptool with the following command:
+
+esptool --chip esp32 merge_bin \
+  -o merged-firmware.bin \
+  --flash_mode dio \
+  --flash_freq 40m \
+  --flash_size 4MB \
+  0x1000 bootloader.bin \
+  0x8000 partitions.bin \
+  0xe000 boot.bin \
+  0x10000 your_app.bin
+If your memory type is opi_opi or opi_qspi, set your flash mode to be dout. Else, if your flash mode is qio or qout, override your flash mode to be dio.
+
+
+
 This is the compile data from the IDE.  You can see the 4 files... but i dont know where boot.bin is....
 
 
