@@ -1,0 +1,10 @@
+{
+  "name": "SHC ST4 1.5 Screen",
+  "version": "10.14.a.5",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "firmware/FYSETC_E4.bin", "offset": 0 }]
+    }
+  ]
+}
