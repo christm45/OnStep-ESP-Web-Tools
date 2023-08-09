@@ -1,0 +1,10 @@
+{
+  "name": "SWS WiFi",
+  "version": "2.06.h",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "firmware/SHC_ST4_1.3.bin", "offset": 0 }]
+    }
+  ]
+}
