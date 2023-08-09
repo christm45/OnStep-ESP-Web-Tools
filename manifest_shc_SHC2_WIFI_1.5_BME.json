@@ -1,0 +1,10 @@
+{
+  "name": "SHC ST4 1.5 Screen",
+  "version": "4.00.e",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "firmware/SHC2_WIFI_1.5_BME.bin", "offset": 0 }]
+    }
+  ]
+}

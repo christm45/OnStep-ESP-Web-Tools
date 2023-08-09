@@ -1,6 +1,6 @@
 {
-  "name": "SWS WiFi",
-  "version": "2.06.h",
+  "name": "SHC ST4 1.3 Screen",
+  "version": "4.00.e",
   "builds": [
     {
       "chipFamily": "ESP32",
