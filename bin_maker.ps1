@@ -21,7 +21,7 @@ $finalCommand | Invoke-Expression
 New-Item $manifestFileName -Force
 
 $manifestContent = '{
-  "name": "FYSETC E4",
+  "name": "' + $projectName + '",
   "version": "' + $ver +'",
   "builds": [
     {
