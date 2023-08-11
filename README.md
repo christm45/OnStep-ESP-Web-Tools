@@ -26,5 +26,5 @@ The merged binary named merged-firmware.bin will be created in the folder you ra
 THis is the binary you need to use.
 
 I made a powershell script to help automate the creation of the bin and manifest files.
-bin_maker.ps1
+```bin_maker.ps1```
 
