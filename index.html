@@ -58,7 +58,7 @@
         padding: 8px;
         border-bottom: 1px solid #ccc;
       }
-      .radios li {
+      .radios, .radios_sws, .radios_shc, .radios_shc2, .radios_fysetc li {
         list-style: none;
         line-height: 2em;
       }
@@ -73,6 +73,48 @@
       }
     </style>
     <script type="module" src="js/install-button.js?module"></script>
+
+    <script type="text/javascript" src="jquery-3.7.0.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+      $('.radios').hide(); 
+      $('.radios_sws').hide();
+      $('.radios_shc').hide();
+      $('.radios_shc2').hide();
+      $('.radios_fysetc').hide();
+
+      
+      
+      $('#type').change(function(){
+
+          $("input[type=radio][name=type]").prop('checked', false);
+          $("#ConnectButton").addClass("invisible")
+
+
+          if($('#type').val() == 'SWS') {
+              $('.radios_sws').show();
+          } else {
+              $('.radios_sws').hide(); 
+          } 
+          if($('#type').val() == 'SHC') {
+              $('.radios_shc').show(); 
+          } else {
+              $('.radios_shc').hide();
+          } 
+          if($('#type').val() == 'SHC2+') {
+              $('.radios_shc2').show(); 
+          } else {
+              $('.radios_shc2').hide(); 
+          } 
+          if($('#type').val() == 'FYSETC E4') {
+              $('.radios_fysetc').show(); 
+          } else {
+              $('.radios_fysetc').hide(); 
+          } 
+      });
+    });
+    </script>
+
   </head>
   <body>
     <div class="content">
@@ -80,31 +122,45 @@
       <p>This is a prototype installer.  Other methods to install and more project information are at this URL <a href="https://onstep.groups.io/g/main/wiki/">https://onstep.groups.io/g/main/wiki/</a>.</p>
       <p>The code that made the binaries is available for download on the CODE links below</p>
       <p>This way you can see what settings were used to create the compiled binary</p>
-      <ul class="radios">
+      <select id="type">
+        <option></option>
+        <option>SWS</option>
+        <option>SHC</option>
+        <option>SHC2+</option>
+        <option>FYSETC E4</option>
+      </select>
+      <ul class="radios_sws">
         <li>
-          <label><input type="radio" name="type" value="sws_wifi" /> SWS WiFi (Both ESP32 and ESP8266) <a href="code\SmartWebServer-main.zip">CODE</a></label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" value="shc_SHC_ST4_1.3" /> SHC ST4 1.3" Screen (ESP32) <a href="code\SHC ST4 1.3.zip">CODE</a></label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" value="shc_SHC2_ST4_1.5_BME" /> SHC2+ ST4 1.5" Screen BME (ESP32) <a href="code\SHC2 ST4 1.5 BME.zip">CODE</a></label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" value="shc_SHC2_ST4_1.5" /> SHC2+ ST4 1.5" Screen (ESP32) <a href="code\SHC2 ST4 1.5.zip">CODE</a></label>
-        </li>
-         <li>
-          <label><input type="radio" name="type" value="shc_SHC2_WIFI_1.5_BME" /> SHC2+ WiFi 1.5" Screen BME (ESP32) <a href="code\SHC2 WiFi 1.5 BME.zip">CODE</a></label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" value="shc_SHC2_WIFI_1.5" /> SHC2+ WiFi 1.5" Screen (ESP32) <a href="code\SHC2 WiFi 1.5.zip">CODE</a></label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" value="FYSETC_E4" /> FYSETC E4 <a href="code\OnStepX-E4.zip"</a>CODE</a></label>
+          <label><input type="radio" name="type" id="radios" value="sws_wifi" /> SWS WiFi (Both ESP32 and ESP8266) <a href="code\SmartWebServer-main.zip">CODE</a></label>
         </li>
       </ul>
+      <ul class="radios_shc">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="shc_SHC_ST4_1.3" /> SHC ST4 1.3" Screen (ESP32) <a href="code\SHC ST4 1.3.zip">CODE</a></label>
+        </li>
+      </ul>
+      <ul class="radios_shc2">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="shc_SHC2_ST4_1.5_BME" /> SHC2+ ST4 1.5" Screen BME (ESP32) <a href="code\SHC2 ST4 1.5 BME.zip">CODE</a></label>
+        </li>
+        <li>
+          <label><input type="radio" name="type" id="radios" value="shc_SHC2_ST4_1.5" /> SHC2+ ST4 1.5" Screen (ESP32) <a href="code\SHC2 ST4 1.5.zip">CODE</a></label>
+        </li>
+         <li>
+          <label><input type="radio" name="type" id="radios" value="shc_SHC2_WIFI_1.5_BME" /> SHC2+ WiFi 1.5" Screen BME (ESP32) <a href="code\SHC2 WiFi 1.5 BME.zip">CODE</a></label>
+        </li>
+        <li>
+          <label><input type="radio" name="type" id="radios" value="shc_SHC2_WIFI_1.5" /> SHC2+ WiFi 1.5" Screen (ESP32) <a href="code\SHC2 WiFi 1.5.zip">CODE</a></label>
+        </li>
+      </ul>
+      <ul class="radios_fysetc">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="FYSETC_E4" /> FYSETC E4 10.14.a.5 <a href="code\OnStepX-E4.zip"</a>CODE</a></label>
+        </li>
+      </ul>
+
       <p class="button-row" align="center">
-        <esp-web-install-button class="invisible"></esp-web-install-button>
+        <esp-web-install-button class="invisible" id="ConnectButton"></esp-web-install-button>
       </p>
 
       <div class="footer">
