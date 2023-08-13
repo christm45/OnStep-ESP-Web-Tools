@@ -82,14 +82,11 @@
       $('.radios_shc').hide();
       $('.radios_shc2').hide();
       $('.radios_fysetc').hide();
-
-      
       
       $('#type').change(function(){
 
           $("input[type=radio][name=type]").prop('checked', false);
           $("#ConnectButton").addClass("invisible")
-
 
           if($('#type').val() == 'SWS') {
               $('.radios_sws').show();
@@ -111,6 +108,7 @@
           } else {
               $('.radios_fysetc').hide(); 
           } 
+          
       });
     });
     </script>

@@ -12,14 +12,10 @@ C:\Users\cgray.GRAY\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.2.
 ```
 
 You need to replace the section 
-```
---port COM7 --baud 921600 --before default_reset --after hard_reset write_flash -e -z
-```
+```--port COM7 --baud 921600 --before default_reset --after hard_reset write_flash -e -z```
 
 With this to merge the binaries into one
-```
-merge_bin -o merged-firmware.bin 
-```
+```merge_bin -o merged-firmware.bin ```
 
 The merged binary named merged-firmware.bin will be created in the folder you ran the command from.
 
