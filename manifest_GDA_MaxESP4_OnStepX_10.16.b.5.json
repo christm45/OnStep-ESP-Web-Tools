@@ -1,0 +1,10 @@
+{
+  "name": "GDA MaxESP4 OnStepX",
+  "version": "10.16.b.5",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "firmware/GDA_MaxESP4_OnStepX_10.16.b.5.bin", "offset": 0 }]
+    }
+  ]
+}

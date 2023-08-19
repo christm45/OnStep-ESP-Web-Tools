@@ -58,7 +58,7 @@
         padding: 8px;
         border-bottom: 1px solid #ccc;
       }
-      .radios, .radios_sws, .radios_shc, .radios_shc2, .radios_fysetc li {
+      .radios, .radios_sws, .radios_shc, .radios_shc2, .radios_fysetc, .radios_gda li {
         list-style: none;
         line-height: 2em;
       }
@@ -82,6 +82,7 @@
       $('.radios_shc').hide();
       $('.radios_shc2').hide();
       $('.radios_fysetc').hide();
+      $('.radios_gda').hide();
       
       $('#type').change(function(){
 
@@ -108,6 +109,11 @@
           } else {
               $('.radios_fysetc').hide(); 
           } 
+          if($('#type').val() == 'GDA Images') {
+              $('.radios_gda').show(); 
+          } else {
+              $('.radios_gda').hide(); 
+          } 
 
       });
     });
@@ -130,6 +136,7 @@
         <option>SHC</option>
         <option>SHC2+</option>
         <option>FYSETC E4</option>
+        <option>GDA Images</option>
       </select>
       <ul class="radios_sws">
         <li>
@@ -158,6 +165,12 @@
       <ul class="radios_fysetc">
         <li>
           <label><input type="radio" name="type" id="radios" value="FYSETC_E4" /> FYSETC E4 10.14.a.5</label>
+        </li>
+      </ul>
+
+      <ul class="radios_gda">
+        <li>
+          <label><input type="radio" name="type" id="radios" value="GDA_MaxESP4_OnStepX_10.16.b.5" /> MaxESP4 OnStepX 10.16.b.5</label>
         </li>
       </ul>
 
