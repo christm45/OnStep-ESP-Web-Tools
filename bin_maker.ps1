@@ -10,7 +10,7 @@ $projectName = 'GDA MaxESP4 OnStepX'
 
 
 $filePrefix = $projectName.replace(' ','_')
-$manifestFileName = $filePrefix + '_' + $ver + '.json'
+$manifestFileName = 'manifest' + $filePrefix + '_' + $ver + '.json'
 $fileName = $filePrefix + '_' + $ver + '.bin'
 
 

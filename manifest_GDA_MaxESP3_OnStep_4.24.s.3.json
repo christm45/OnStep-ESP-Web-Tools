@@ -1,0 +1,10 @@
+{
+  "name": "GDA MaxESP3 OnStep",
+  "version": "4.24.s.3",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "firmware/GDA_MaxESP3_OnStep_4.24.s.3.bin", "offset": 0 }]
+    }
+  ]
+}
