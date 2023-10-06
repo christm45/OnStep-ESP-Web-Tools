@@ -4,12 +4,12 @@
   "builds": [
     {
       "chipFamily": "ESP32",
-      "parts": [{ "path": "firmware/SWS_WiFi_ESP32.bin", "offset": 0 }]
+      "parts": [{ "path": "firmware/SWS_WiFi_ESP32_2.06.h.bin", "offset": 0 }]
     },
     {
       "chipFamily": "ESP8266",
       "parts": [
-        { "path": "firmware/SWS_WiFi_ESP8266.bin", "offset": 0 }
+        { "path": "firmware/SWS_WiFi_ESP8266_2.06.h.bin", "offset": 0 }
       ]
     }
   ]
