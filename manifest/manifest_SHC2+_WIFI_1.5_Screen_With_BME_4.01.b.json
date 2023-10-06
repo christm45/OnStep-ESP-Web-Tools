@@ -4,7 +4,7 @@
   "builds": [
     {
       "chipFamily": "ESP32",
-      "parts": [{ "path": "firmware/SHC2+_WIFI_1.5_Screen_With_BME_4.01.b.bin", "offset": 0 }]
+      "parts": [{ "path": "/OnStep-Web-Tools/firmware/SHC2+_WIFI_1.5_Screen_With_BME_4.01.b.bin", "offset": 0 }]
     }
   ]
 }

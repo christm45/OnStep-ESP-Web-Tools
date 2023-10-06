@@ -4,7 +4,7 @@
   "builds": [
     {
       "chipFamily": "ESP32",
-      "parts": [{ "path": "firmware/FYSETC_E4.bin", "offset": 0 }]
+      "parts": [{ "path": "/OnStep-Web-Tools/firmware/FYSETC_E4.bin", "offset": 0 }]
     }
   ]
 }

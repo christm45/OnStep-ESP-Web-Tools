@@ -1,0 +1,16 @@
+{
+  "name": "SWS WiFi",
+  "version": "2.06.j",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [{ "path": "/OnStep-Web-Tools/firmware/SWS_WiFi_ESP32_2.06.j.bin", "offset": 0 }]
+    },
+    {
+      "chipFamily": "ESP8266",
+      "parts": [
+        { "path": "/OnStep-Web-Tools/firmware/SWS_WiFi_ESP8266_2.06.j.bin", "offset": 0 }
+      ]
+    }
+  ]
+}

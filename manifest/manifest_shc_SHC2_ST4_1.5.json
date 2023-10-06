@@ -4,7 +4,7 @@
   "builds": [
     {
       "chipFamily": "ESP32",
-      "parts": [{ "path": "firmware/SHC2_ST4_1.5.bin", "offset": 0 }]
+      "parts": [{ "path": "/OnStep-Web-Tools/firmware/SHC2_ST4_1.5.bin", "offset": 0 }]
     }
   ]
 }
