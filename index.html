@@ -89,32 +89,12 @@
           $("input[type=radio][name=type]").prop('checked', false);
           $("#ConnectButton").addClass("invisible")
 
-          if($('#type').val() == 'SWS') {
-              $('.radios_sws').show();
-          } else {
-              $('.radios_sws').hide(); 
-          } 
-          if($('#type').val() == 'SHC') {
-              $('.radios_shc').show(); 
-          } else {
-              $('.radios_shc').hide();
-          } 
-          if($('#type').val() == 'SHC2+') {
-              $('.radios_shc2').show(); 
-          } else {
-              $('.radios_shc2').hide(); 
-          } 
           if($('#type').val() == 'FYSETC E4') {
               $('.radios_fysetc').show(); 
           } else {
               $('.radios_fysetc').hide(); 
           } 
-          if($('#type').val() == 'GDA Images') {
-              $('.radios_gda').show(); 
-          } else {
-              $('.radios_gda').hide(); 
-          } 
-
+          
       });
     });
     </script>
@@ -132,52 +112,17 @@
       </ol>
       <select id="type">
         <option>PROJECT</option>
-        <option>SWS</option>
-        <option>SHC</option>
-        <option>SHC2+</option>
         <option>FYSETC E4</option>
-        <option>GDA Images</option>
       </select>
       <ul class="radios_sws">
-        <li>
-          <label><input type="radio" name="type" id="radios" value="sws_wifi_2.06.h" /> SWS WiFi (2.06.h Both ESP32 and ESP8266)</label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" id="radios" value="sws_wifi_2.06.j" /> SWS WiFi (2.06.j Both ESP32 and ESP8266)</label>
-        </li>
-      </ul>
-      <ul class="radios_shc">
-        <li>
-          <label><input type="radio" name="type" id="radios" value="shc_SHC_ST4_1.3" /> SHC ST4 1.3" Screen (ESP32)</label>
-        </li>
-      </ul>
-      <ul class="radios_shc2">
-        <li>
-          <label><input type="radio" name="type" id="radios" value="SHC2+_ST4_1.5_Screen_with_BME_4.01.b" /> SHC2+ ST4 1.5" Screen BME (4.01.b ESP32)</label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" id="radios" value="SHC2+_ST4_1.5_Screen_4.01.b" /> SHC2+ ST4 1.5" Screen (4.01.b ESP32)</label>
-        </li>
-         <li>
-          <label><input type="radio" name="type" id="radios" value="SHC2+_WIFI_1.5_Screen_With_BME_4.01.b" /> SHC2+ WiFi 1.5" Screen BME (4.01.b ESP32)</label>
-        </li>
-        <li>
-          <label><input type="radio" name="type" id="radios" value="SHC2+_WIFI_1.5_Screen_4.01.b" /> SHC2+ WiFi 1.5" Screen (4.01.b ESP32)</label>
-        </li>
-      </ul>
+       </ul>
       <ul class="radios_fysetc">
         <li>
           <label><input type="radio" name="type" id="radios" value="FYSETC_E4_10.24c" /> FYSETC E4 10.18.c.6</label>
         </li>
       </ul>
 
-      <ul class="radios_gda">
-        <li>
-          <label><input type="radio" name="type" id="radios" value="GDA_MaxESP4_OnStepX_10.16.b.5" /> MaxESP4 OnStepX 10.16.b.5</label>
-        </li>
-      </ul>
-
-      <p class="button-row" align="center">
+        <p class="button-row" align="center">
         <esp-web-install-button class="invisible" id="ConnectButton"></esp-web-install-button>
       </p>
 
