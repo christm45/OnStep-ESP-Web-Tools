@@ -1,6 +1,6 @@
 {
   "name": "FYSETC E4",
-  "version": "10.14.a.5",
+  "version": "10.24c",
   "builds": [
     {
       "chipFamily": "ESP32",
