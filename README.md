@@ -49,7 +49,10 @@ If the project/version does not appear, run `sync_firmware.bat` once (see next s
 If you have the OnStep project in Arduino IDE and want to create a merged `.bin`:
 
 1. In Arduino IDE: File → Preferences → enable “Show verbose output during: upload”.
-2. Upload your sketch once. Copy the full `esptool.exe` command from the IDE output.
+2. Upload your sketch once. Copy the full `esptool.exe` command from the IDE output example.
+
+C:\Users\...\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe --chip esp32 --port COM7 --baud 921600 --before default_reset --after hard_reset write_flash -e -z --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 C:\Users\...\AppData\Local\Temp\arduino_build_972360/OnStepX.ino.bootloader.bin 0x8000 C:\Users\...\AppData\Local\Temp\arduino_build_972360/OnStepX.ino.partitions.bin 0xe000 C:\Users\...\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.17/tools/partitions/boot_app0.bin 0x10000 C:\Users\...\AppData\Local\Temp\arduino_build_972360/OnStepX.ino.bin
+
 3. Run the helper script and paste the command when asked:
 
 ```powershell
@@ -125,3 +128,4 @@ Start the local web installer (recommended):
 ```powershell
 .\start_webtool.ps1
 ```
+
