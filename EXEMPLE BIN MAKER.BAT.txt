@@ -9,19 +9,19 @@ Instructions:
 
 Press Enter after copying the esptool.exe line to the clipboard: 
 esptool.exe line
-
-C:\Users\cbvbo\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe --chip esp32 --port COM8 --baud 115200 --before default_reset --after hard_reset write_flash -e -z --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 C:\Users\cbvbo\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bootloader.bin 0x8000 C:\Users\cbvbo\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.partitions.bin 0xe000 C:\Users\cbvbo\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.17/tools/partitions/boot_app0.bin 0x10000 C:\Users\cbvbo\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bin
+EXEMPLE
+C:\Users\...USERNAME...\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe --chip esp32 --port COM8 --baud 115200 --before default_reset --after hard_reset write_flash -e -z --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 C:\Users\...USERNAME...\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bootloader.bin 0x8000 C:\Users\...USERNAME...\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.partitions.bin 0xe000 C:\Users\...USERNAME...\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.17/tools/partitions/boot_app0.bin 0x10000 C:\Users\...USERNAME...\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bin
 Enter firmware version (e.g. 10.24c): 10.24c
 Enter project name (e.g. FYSETC E4): FSETC E4
 Detected chip: ESP32
-Found esptool: C:\Users\cbvbo\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe
+Found esptool: C:\Users\...USERNAME...\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe
 
 Starting esptool to merge binaries...
 Command:
-  C:\Users\cbvbo\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe --chip esp32 merge_bin -o C:\Users\cbvbo\Desktop\OnStep-ESP-Web-Tools-main\OnStep-ESP-Web-Tools\FSETC_E4_10.24c.bin --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 C:\Users\cbvbo\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bootloader.bin 0x8000 C:\Users\cbvbo\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.partitions.bin 0xe000 C:\Users\cbvbo\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.17/tools/partitions/boot_app0.bin 0x10000 C:\Users\cbvbo\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bin
+  C:\Users\...USERNAME...\AppData\Local\Arduino15\packages\esp32\tools\esptool_py\4.5.1/esptool.exe --chip esp32 merge_bin -o C:\Users\...USERNAME...\Desktop\OnStep-ESP-Web-Tools-main\OnStep-ESP-Web-Tools\FSETC_E4_10.24c.bin --flash_mode dio --flash_freq 80m --flash_size 4MB 0x1000 C:\Users\...USERNAME...\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bootloader.bin 0x8000 C:\Users\...USERNAME...\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.partitions.bin 0xe000 C:\Users\...USERNAME...\AppData\Local\Arduino15\packages\esp32\hardware\esp32\2.0.17/tools/partitions/boot_app0.bin 0x10000 C:\Users\...USERNAME...\AppData\Local\Temp\arduino_build_361489/OnStepX.ino.bin
 
 esptool.py v4.5.1
-Wrote 0x131970 bytes to file C:\Users\cbvbo\Desktop\OnStep-ESP-Web-Tools-main\OnStep-ESP-Web-Tools\FSETC_E4_10.24c.bin, ready to flash to offset 0x0
+Wrote 0x131970 bytes to file C:\Users\...USERNAME...\Desktop\OnStep-ESP-Web-Tools-main\OnStep-ESP-Web-Tools\FSETC_E4_10.24c.bin, ready to flash to offset 0x0
 ✓ Binary created: FSETC_E4_10.24c.bin
 ✓ Moved to: firmware\FSETC_E4_10.24c.bin
 ✓ Manifest created: manifest\manifest_FSETC_E4_10.24c.json
@@ -31,4 +31,5 @@ Wrote 0x131970 bytes to file C:\Users\cbvbo\Desktop\OnStep-ESP-Web-Tools-main\On
 Binary: firmware\FSETC_E4_10.24c.bin
 Manifest: manifest\manifest_FSETC_E4_10.24c.json
 
-PS C:\Users\cbvbo\Desktop\OnStep-ESP-Web-Tools-main\OnStep-ESP-Web-Tools>
+
+PS C:\Users\...USERNAME...\Desktop\OnStep-ESP-Web-Tools-main\OnStep-ESP-Web-Tools>
