@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>OnStep SWS Installer</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="dark light" />
+    <style>
+      body {
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Ubuntu, sans-serif;
+        padding: 0;
+        margin: 0;
+        line-height: 1.4;
+      }
+      .content {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 12px;
+      }
+      h2 {
+        margin-top: 2em;
+      }
+      h3 {
+        margin-top: 1.5em;
+      }
+      a {
+        color: #03a9f4;
+      }
+      .invisible {
+        visibility: hidden;
+      }
+      .hidden {
+        display: none;
+      }
+      esp-web-install-button[install-unsupported] {
+        visibility: inherit;
+      }
+      .content pre {
+        max-width: 100%;
+        overflow-y: scroll;
+      }
+      .footer {
+        margin-top: 24px;
+        border-top: 1px solid #ccc;
+        padding-top: 24px;
+        text-align: center;
+      }
+      .footer .initiative {
+        font-style: italic;
+        margin-top: 16px;
+      }
+      table {
+        border-spacing: 0;
+      }
+      td {
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+      }
+      .radios, .radios_sws, .radios_shc, .radios_shc2, .radios_fysetc, .radios_gda, .radios_versions li {
+        list-style: none;
+        line-height: 2em;
+      }
+      .radios_versions {
+        margin-top: 1em;
+        padding-left: 0;
+      }
+      .radios_versions label {
+        cursor: pointer;
+        display: block;
+        padding: 8px;
+        border-radius: 4px;
+      }
+      .radios_versions label:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      @media (prefers-color-scheme: dark) {
+        .radios_versions label:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #333;
+          color: #fff;
+        }
+        a {
+          color: #58a6ff;
+        }
+      }
+    </style>
+    <script type="module" src="js/install-button.js?module"></script>
+
+    <script type="text/javascript" src="jquery-3.7.0.min.js"></script>
+    <script type="text/javascript">
+    // List of available manifests (loaded dynamically)
+    let manifests = [];
+    let projects = {};
+
+    // Load all available manifests
+    async function loadManifests() {
+      try {
+        // Known manifests - you can add more here
+        // or generate the list automatically using list_manifests.ps1
+        const manifestFiles = [
+          'manifest/manifest_FYSETC_E4_10.24c.json'
+        ];
+
+        // Try to load list from manifest_list.js if available
+        try {
+          const listModule = await import('./manifest_list.js?module');
+          if (listModule && listModule.MANIFEST_FILES) {
+            manifestFiles.length = 0;
+            manifestFiles.push(...listModule.MANIFEST_FILES);
+            console.log('Manifest list loaded from manifest_list.js');
+          }
+        } catch (e) {
+          console.log('manifest_list.js not found, using default list');
+        }
+
+        // Build list without fetch (file:// compatible) by parsing filenames:
+        // Expected format: manifest/manifest_<PROJECT>_<VERSION>.json
+        manifestFiles.forEach((mf) => {
+          const base = mf.split('/').pop(); // manifest_FYSETC_E4_10.24c.json
+          if (!base || !base.startsWith('manifest_') || !base.endsWith('.json')) return;
+          const core = base.substring('manifest_'.length, base.length - '.json'.length); // FYSETC_E4_10.24c
+          // Version = last segment after the last underscore
+          const lastUnderscore = core.lastIndexOf('_');
+          if (lastUnderscore <= 0) return;
+          const projectSlug = core.substring(0, lastUnderscore); // FYSETC_E4
+          const version = core.substring(lastUnderscore + 1);    // 10.24c
+          const projectName = projectSlug.replace(/_/g, ' ');    // FYSETC E4
+          const chipFamily = 'ESP32';
+
+          manifests.push({
+            file: mf,
+            name: projectName,
+            version: version,
+            chipFamily: chipFamily
+          });
+
+          if (!projects[projectName]) {
+            projects[projectName] = [];
+          }
+          projects[projectName].push({
+            file: mf,
+            version: version,
+            chipFamily: chipFamily
+          });
+        });
+
+        // Sort versions (newest first)
+        for (const project in projects) {
+          projects[project].sort((a, b) => {
+            // Simple version comparison
+            return b.version.localeCompare(a.version);
+          });
+        }
+
+        // Update UI
+        updateProjectSelect();
+        // If only one project, auto-select and show versions
+        const projectNames = Object.keys(projects);
+        if (projectNames.length === 1) {
+          $('#type').val(projectNames[0]).trigger('change');
+        }
+      } catch (error) {
+        console.error('Error while loading manifests:', error);
+      }
+    }
+
+    function updateProjectSelect() {
+      const select = $('#type');
+      select.empty();
+      select.append('<option value="">Select a project</option>');
+      
+      for (const projectName in projects) {
+        select.append(`<option value="${projectName}">${projectName}</option>`);
+      }
+    }
+
+    function updateVersionRadios(projectName) {
+      const container = $('.radios_versions');
+      container.empty();
+      
+      if (!projectName || !projects[projectName]) {
+        container.hide();
+        return;
+      }
+
+      const versions = projects[projectName];
+      if (!versions.length) {
+        container.hide();
+        return;
+      }
+      versions.forEach((item, index) => {
+        const radioId = `radio_${projectName.replace(/\s+/g, '_')}_${item.version.replace(/\./g, '_')}`;
+        const label = `${item.version} (${item.chipFamily})`;
+        const value = item.file.replace('manifest/', '').replace('.json', '');
+        
+        container.append(`
+          <li>
+            <label>
+              <input type="radio" name="firmware" id="${radioId}" value="${value}" />
+              ${label}
+            </label>
+          </li>
+        `);
+      });
+
+      container.show();
+
+      // Auto-select first version if only one is available
+      if (versions.length === 1) {
+        container.find('input[name="firmware"]').first().prop('checked', true).trigger('change');
+      }
+    }
+
+    $(function() {
+      $('.radios_versions').hide();
+      $('#ConnectButton').addClass("invisible");
+
+      // Load manifests at startup
+      loadManifests();
+
+      $('#type').change(function() {
+        $("input[type=radio][name=firmware]").prop('checked', false);
+        $("#ConnectButton").addClass("invisible");
+        const selectedProject = $(this).val();
+        updateVersionRadios(selectedProject);
+      });
+
+      // Listen to version selection
+      $(document).on('change', 'input[name="firmware"]', function() {
+        const manifestFile = $(this).val();
+        const button = $('#ConnectButton');
+        button.attr('manifest', `./manifest/${manifestFile}.json`);
+        button.removeClass('invisible');
+
+        // Log a hint if environment won't allow flashing
+        const isSupported = 'serial' in navigator;
+        const isAllowed = window.isSecureContext;
+        if (!isSupported || !isAllowed) {
+          let msg = '';
+          if (!isSupported) {
+            msg += 'Your browser does not support Web Serial. Use Chrome or Edge. ';
+          }
+          if (!isAllowed) {
+            msg += 'Open this page via http://localhost or over HTTPS.';
+          }
+          console.log(msg);
+        }
+      });
+    });
+    </script>
+
+  </head>
+  <body>
+    <div class="content">
+      <h1>OnStep ESP32 and ESP8266 Installer</h1>
+      <p>This is a prototype installer.  Other methods to install and more project information are at this URL <a href="https://onstep.groups.io/g/main/wiki/">https://onstep.groups.io/g/main/wiki/</a>.</p>
+      <ol>
+        <li>First choose the project</li>
+        <li>Choose the version you want to load on your ESP MCU</li>
+        <li>Then use the CONNECT button to connect to your ESP via USB Serial</li>
+        <li>**Most ESP32s you need to hold the boot button to flash the firmware**</li>
+      </ol>
+      <select id="type">
+        <option value="">Select a project</option>
+      </select>
+      <ul class="radios_versions">
+        <!-- Versions will be loaded dynamically -->
+      </ul>
+
+        <p class="button-row" align="center">
+        <esp-web-install-button class="invisible" id="ConnectButton"></esp-web-install-button>
+      </p>
+
+      <div class="footer">
+        Installer powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
+    </div>
+    <script>
+      // Le script jQuery gère déjà la sélection des firmwares
+      // Ce script est conservé pour compatibilité mais peut être supprimé si nécessaire
+    </script>
+  </body>
+</html>
