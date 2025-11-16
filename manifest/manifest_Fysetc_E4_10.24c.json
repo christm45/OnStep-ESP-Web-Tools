@@ -1,0 +1,15 @@
+﻿{
+    "builds":  [
+                   {
+                       "chipFamily":  "ESP32",
+                       "parts":  [
+                                     {
+                                         "offset":  0,
+                                         "path":  "firmware/Fysetc_E4_10.24c.bin"
+                                     }
+                                 ]
+                   }
+               ],
+    "name":  "Fysetc E4",
+    "version":  "10.24c"
+}
