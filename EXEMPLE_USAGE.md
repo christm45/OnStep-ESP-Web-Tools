@@ -18,6 +18,7 @@ This guide walks you through flashing an ESP32/ESP8266 with the web installer an
 - Optional: CH340/CP210x driver if your board needs it
 
 --- RUN ONLY THE .BAT FILES AND NOT THE .PS1 .... AFTER COMPILING THE ONSTEP IN ARDUINO IDE COPY AT THE END THE COMMAND LIKE IN THE EXEMPLE TO PASTE IT IN bin_maker.bat
+
 --- SEE DIRECTLY THE STEP 4 HERE BELOW TO CREATE YOUR OWN FIRMWARE FILE
 
 1. RUN bin_maker.bat
@@ -131,6 +132,7 @@ Start the local web installer (recommended):
 ```powershell
 .\start_webtool.ps1
 ```
+
 
 
 
