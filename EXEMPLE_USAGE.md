@@ -17,7 +17,12 @@ This guide walks you through flashing an ESP32/ESP8266 with the web installer an
 - USB cable for your ESP board (use a data cable, not charge‑only)
 - Optional: CH340/CP210x driver if your board needs it
 
----
+--- RUN ONLY THE .BAT FILES AND NOT THE .PS1 .... AFTER COMPILING THE ONSTEP IN ARDUINO IDE COPY AT THE END THE COMMAND LIKE IN THE EXEMPLE TO PASTE IT IN bin_maker.bat
+
+1. RUN bin_maker.bat
+2. RUN sync_firmware.bat
+3. RUN start_webtool.bat
+
 
 ## 2) One‑click flashing (recommended)
 
@@ -125,4 +130,5 @@ Start the local web installer (recommended):
 ```powershell
 .\start_webtool.ps1
 ```
+
 
