@@ -22,7 +22,7 @@ This guide walks you through flashing an ESP32/ESP8266 with the web installer an
 ## 2) One‑click flashing (recommended)
 
 1. If you already have a `.bin` file, copy it into the `firmware\` folder. Recommended name format: `Project_Version.bin` (example: `FYSETC_E4_10.24c.bin`).
-2. Double‑click `start_webtool.ps1`. Your browser will open `http://localhost:8000/index.html`.
+2. Double‑click `start_webtool.bat`. Your browser will open `http://localhost:8000/index.html`.
 3. In the page:
    - Select your project from “Select a project”.
    - Choose the firmware version (e.g., `10.24c (ESP32)`).
@@ -31,16 +31,16 @@ This guide walks you through flashing an ESP32/ESP8266 with the web installer an
    - For many ESP32 boards, hold the BOOT button when asked, then release after flashing starts.
 4. Wait for the progress to reach 100%. The device will reboot with the new firmware.
 
-If the project/version does not appear, run `.\sync_firmware.ps1` once (see next section) and refresh the page.
+If the project/version does not appear, run `.\sync_firmware.bat` once (see next section) and refresh the page.
 
 ---
 
 ## 3) Add a new .bin to the UI (no coding)
 
 1. Copy your new `.bin` file into `firmware\` (use `Project_Version.bin` naming if possible).
-2. Double‑click `sync_firmware.ps1`.
+2. Double‑click `sync_firmware.bat`.
    - This creates a matching manifest in `manifest\` and regenerates `manifest_list.js`.
-3. Refresh the web page (or re‑open `start_webtool.ps1`). Your new version will appear automatically.
+3. Refresh the web page (or re‑open `start_webtool.bat`). Your new version will appear automatically.
 
 ---
 
@@ -53,7 +53,7 @@ If you have the OnStep project in Arduino IDE and want to create a merged `.bin`
 3. Run the helper script and paste the command when asked:
 
 ```powershell
-.\bin_maker.ps1
+.\bin_maker.bat
 ```
 
 You will be prompted for:
@@ -75,17 +75,17 @@ $command = 'C:\Path\to\esptool.exe --chip esp32 --port COM7 --baud 921600 --befo
 Finally, run:
 
 ```powershell
-.\sync_firmware.ps1
+.\sync_firmware.bat
 ```
 
-Then open the UI via `start_webtool.ps1` and flash as in step 2.
+Then open the UI via `start_webtool.bat` and flash as in step 2.
 
 ---
 
 ## 5) Troubleshooting
 
 - No CONNECT button or it’s disabled:
-- Always open the page via `start_webtool.ps1` (uses `http://localhost`, required by Web Serial).
+- Always open the page via `start_webtool.bat` (uses `http://localhost`, required by Web Serial).
   - Use Chrome or Edge; other browsers may not support Web Serial.
 - No device in the list / connection fails:
   - Close Arduino Serial Monitor or any app using the COM port.
@@ -93,7 +93,7 @@ Then open the UI via `start_webtool.ps1` and flash as in step 2.
   - For ESP32, hold BOOT when prompted; press EN/RESET after flashing if it doesn’t auto‑reboot.
 - New firmware doesn’t show up:
   - Make sure the `.bin` is in `firmware\`.
-  - Run `.\sync_firmware.ps1` to regenerate manifests and refresh the page.
+  - Run `.\sync_firmware.bat` to regenerate manifests and refresh the page.
 - “Permission” prompt doesn’t appear:
   - Click the page, then `CONNECT` again; allow access to the serial device when prompted.
 
@@ -125,3 +125,4 @@ Start the local web installer (recommended):
 ```powershell
 .\start_webtool.ps1
 ```
+
